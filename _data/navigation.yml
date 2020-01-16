@@ -2,8 +2,8 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Pages"
-    url: /archive-layout-with-content/
+  # - title: "Pages"
+  #  url: /archive-layout-with-content/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
