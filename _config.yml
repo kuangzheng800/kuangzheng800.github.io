@@ -58,7 +58,7 @@ plugins:
 author:
   name   : "Zheng Kuang"
   avatar : "/assets/images/avatar.jpg"
-  bio    : "Clinical Bioinformatics Analyst. Master of Data Science in training"
+  bio    : "Clinical Bioinformatics Analyst \n Master of Data Science in training"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
