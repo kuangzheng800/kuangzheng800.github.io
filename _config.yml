@@ -108,7 +108,7 @@ analytics:
 # Site Author
 author:
   name             : "Zheng Kuang"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/images/avatar.jpg"
   bio              : "Clinical bioinformatics analyst @ Foundation Medicine"
   location         : "Boston, MA"
   email            :
@@ -300,5 +300,4 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile:true
-      
+      author_profile: true
