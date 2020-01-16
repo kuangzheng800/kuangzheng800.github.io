@@ -201,8 +201,7 @@ np.log(permit[permit.declared_valuation > 10].declared_valuation).plot(
 
 
 
-
-![png](output_9_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_9_1.png">
 
 
 
@@ -278,8 +277,7 @@ permit.issued_year.plot(kind='hist')
 
 
 
-
-![png](output_15_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_15_1.png">
 
 
 Finally, we found most of the permits are issued after 2010, which means the corresponding project is likely to still be relevant to today's market (2019).
