@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Zheng Kuang's Data Jounral
+title: Zheng Kuang's Data Journal
 email: kuangzheng800@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A pretty GitHub page to document my data sciene projects
@@ -58,7 +58,7 @@ plugins:
 author:
   name   : "Zheng Kuang"
   avatar : "/assets/images/avatar.jpg"
-  bio    : "Clinical Bioinformatics Analyst. Master of Data Science in training"
+  bio    : "Clinical Bioinformatics Analyst \n Master of Data Science in training"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
