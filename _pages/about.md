@@ -1,15 +1,10 @@
 ---
-layout: page
-title: About
+title: "About"
 permalink: /about/
+header:
+  image: "/images/zakim.jpg"
 ---
 
-Some information about you!
+I'm a senior data scientist who excels at data wrangling, machine learning, exploratory analysis, and data visualizations.
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+Etc, etc, etc
