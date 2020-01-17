@@ -27,7 +27,7 @@ The aim of this study is to calibrate an AOD-land use-PM2.5 model using a data-d
 ### Study area
 Our study is located in the Greater London Area, a rectangular region ranging from -0.561° to 0.372° in longitude and 51.217° N to 51.798° N in latitude. The study region comprised a mixture of urban and rural areas and a wide variation of population density, which ranges from the most populated borough of Islington (14,517 people/$$km^2$$) in the greater London area to the least populated neighborhood Sevenoaks in county of Kent (317 people/ $$km^2$$).
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/picture1.png",title = 'Figure 1. the Greater London Area'>
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/picture1.png" = 'Figure 1. the Greater London Area'>
 
 ### AOD
 AOD data can be downloaded from [NASA MODIS](https://neo.sci.gsfc.nasa.gov/view.php?datasetId=MODAL2_M_AER_OD), although those data is very chunky and sparse, requiring significant amount of storage and computational power to process (Thanks to my colleague [Qian, Di](https://www.linkedin.com/in/qiandi/) for the initial acquisition). NASA developed an algorithms (multi-angle implementation of atmospheric correction algorithm[^4]) to deduce AOD from MODIS remote-sensing data, which have a theoretical precision of ±0.05τ . NASA provides AOD readings at a precision of 1 km × 1 km grid cells. The study region was covered by an orthogonal array that consisted of 22,878 such grid cells.
@@ -35,7 +35,7 @@ AOD data can be downloaded from [NASA MODIS](https://neo.sci.gsfc.nasa.gov/view.
 ### Meteorological data and air pollution data
 Spatial-Temporal Exposure Assessment Methods (STEAM) project led by King’s College, London provided $$PM_{2.5}$$ daily concentration at 29 ground-level monitors, as well as meteorological factors comprising of barometric pressure (BP), temperature (TMP), cloudiness (CLD), dew point temperature (DEWA), wind speed (WDSP), wind direction (WDIR) and planetary boundary layer height (PBLH). (These are proprietary data.) In preparation, we spatially joined each day’s meteorological data to AOD readings, using an algorithm that allowed for adjacency allocation varying daily. Number of households and population density was extracted from the 2011 census and merged to the AOD grid cells.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/picture2.png",title = 'Figure 2. Average AOD readings from 2004 to 2014 in the study area and locations of PM2.5 monitors. '>
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/picture2.png" title = 'Figure 2. Average AOD readings from 2004 to 2014 in the study area and locations of PM2.5 monitors. '>
 
 
 ## Model training
@@ -48,7 +48,7 @@ $$AOD_{ij}$$ notifies AOD readings on day j at site i. $$b_1$$ and $$b_2$$ stand
 
 The *ex ante* model allows for many interaction terms in the $$β_3$$ term, which may result in overfitting. For model selection, we use east absolute shrinkage and selection operator (LASSO) to identiy the optimal predition model. At the optimal penalty $$\lambda$$, model selection results are demonstrated as follow:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/picture3.png",title = "Figure 3. Demonstration of final model selection produced by LASSO. Final model has degrees of freedom of 39.">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/picture3.png" title = "Figure 3. Demonstration of final model selection produced by LASSO. Final model has degrees of freedom of 39.">
 
 
 We then used the model specification generated from LASSO to predict the spatial and temporal distribution of PM2.5 in Greater London area. All model training and prediction was done using R version 3.3.0 (2016-05-03).
