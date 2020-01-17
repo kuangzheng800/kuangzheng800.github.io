@@ -572,7 +572,7 @@ ax.tick_params(axis='both', which='both', length=0)
 plt.show()
 ```
 
-![png](output_49_0.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_49_0.png">
 
 Here we see when weighted by declared valuation, downtown / Seaport area certainly overshadows the rest of the city. There high value band spans west to Fenway and south to Southie / North Dorchester. 
 
