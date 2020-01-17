@@ -17,7 +17,7 @@ I'm interested in working with clinical and epidemiological data, as well as spa
 
 Wrangling data and running regression is fun, but also somewhat lonely :cry:. I mean I do have a life that my Terminal doesn't get to see, but hey, I thought my Terminal has something cool to share as well! So here it is, a data science journal to keep myself motivated and my progresses documented.
 
-Remeber those times when you have no brackets after your `print`? Exactly. Memories fade faster than most of expect, but hey at least the webpage lives on. 
+Remember those times when you have no brackets after your `print`? Exactly. Memories fade faster than most of expect, but hey at least the webpage lives on. 
 
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/hello_world.jpg">
