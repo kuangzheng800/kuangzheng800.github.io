@@ -3,7 +3,8 @@ title: "Boston Construction Permits "
 date: 2020-01-16
 tags: [geopandas, geo-analysis]
 header:
-  image: "Construction permit data in Boston - where are investments going? "
+  image: "\images\ParsePermits\Boston.jpg"
+  caption: "Construction permits data in Boston - where are investments going? "
 mathjax: "true"
 ---
 
@@ -376,8 +377,8 @@ geo_grids_value['declared_valuation_lg'] = np.log(geo_grids_value.declared_valua
 ```
 
 Here we are adding a few extra features to plot
-- high value commercial construction (declared valuation > $10^6$ USD)
-- high value public investment (investment made by City of Boston with value > $10^6$ USD)
+- high value commercial construction (declared valuation > $$10^6$$ USD)
+- high value public investment (investment made by City of Boston with value > $$10^6$$ USD)
 
 
 ```python
