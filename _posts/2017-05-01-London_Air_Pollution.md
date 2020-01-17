@@ -59,6 +59,7 @@ We then used the model specification generated from LASSO to predict the spatial
 ### Temporal cross-validation
 
 Mean and standard deviation for 10-fold cross validation $$R^2$$, mean absolute percentage error (MAPE), mean absolute error (MAE)
+
 |             | CV_R2 | SD(CV_R2) | MAPE  | SD(MAPE) | MAE   | SD(MAE) |
 |-------------|-------|-----------|-------|----------|-------|---------|
 | 2004 - 2014 | 0.844 | 0.002     | 0.238 | 0.006    | 3.560 | 0.023   |
