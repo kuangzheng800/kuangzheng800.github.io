@@ -46,10 +46,14 @@ $$AOD_{ij}$$ notifies AOD readings on day j at site i. $$b_1$$ and $$b_2$$ stand
 
 ### LASSO
 
-The $ex ante$ model allows for many interaction terms in the $$β_3$$ term, which may result in overfitting. For model selection, we use east absolute shrinkage and selection operator (LASSO) to identiy the optimal predition model. At the optimal penalty $$\lambda$$
+The *ex ante* model allows for many interaction terms in the $$β_3$$ term, which may result in overfitting. For model selection, we use east absolute shrinkage and selection operator (LASSO) to identiy the optimal predition model. At the optimal penalty $$\lambda$$, model selection results are demonstrated as follow:
+
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/picture3.png",title = "Figure 3. Demonstration of final model selection produced by LASSO. Final model has degrees of freedom of 39.">
 
 
 We then used the model specification generated from LASSO to predict the spatial and temporal distribution of PM2.5 in Greater London area. All model training and prediction was done using R version 3.3.0 (2016-05-03).
+
+
 [^1]: Dockery, Douglas W., et al. "An association between air pollution and mortality in six US cities." New England journal of medicine 329.24 (1993): 1753-1759.
 [^2]: Riva, D. R., et al. "Low dose of fine particulate matter (PM2. 5) can induce acute oxidative stress, inflammation and pulmonary impairment in healthy mice." Inhalation toxicology 23.5 (2011): 257-267.
 [^3]: Schaap, M., et al. "Exploring the relation between aerosol optical depth and PM 2.5 at Cabauw, the Netherlands." Atmospheric Chemistry and Physics 9.3 (2009): 909-925.
