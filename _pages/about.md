@@ -20,4 +20,4 @@ Wrangling data and running regression is fun, but also somewhat lonely :cry:. I 
 Remeber those times when you have no brackets after your `print`? Exactly. Memories fade faster than most of expect, but hey at least the webpage lives on. 
 
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/hello_world.jpg">
+<img src="{{ site.url }}{{ site.baseurl }}/images/hello_world.jpg">
