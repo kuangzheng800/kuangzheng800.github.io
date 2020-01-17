@@ -495,7 +495,7 @@ permit_KDE['w_col'] = np.floor(np.log(permit_clean.declared_valuation))
 permit_KDE.w_col.plot(kind = 'hist')
 ```
 
-Taking a look at the distribution of the integer log declared values in those new contractions. 
+Taking a look at the distribution of the integer log declared values in those new constructions. 
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_40_2.png">
 
