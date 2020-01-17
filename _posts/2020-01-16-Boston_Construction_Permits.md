@@ -1,6 +1,17 @@
+---
+title: "Boston Construction Permits "
+date: 2020-01-16
+tags: [geopandas, geo-analysis]
+header:
+  image: "Construction permit data in Boston - where are investments going? "
+mathjax: "true"
+---
+
+
+
 ## Construction permit data in Boston - where are investments going? 
 
-I have started looking for a property in Boston. With many of its self-claimed "up and coming" neighborhoods, it can be tricky to locate the next most profitable investment. Of course one way to make money is to chase money; where there are already lots of investment would probably see the highest appreication. Therefore, I leveraged the [Boston construction permits data](https://data.boston.gov/dataset/approved-building-permits) published by the /data.boston.gov to hopeful identify where the investments are going
+I have started looking for a property in Boston. With many of its self-claimed "up and coming" neighborhoods, it can be tricky to locate the next most profitable investment. Of course one way to make money is to chase money; where there are already lots of investment would probably see the highest appreciation. Therefore, I leveraged the [Boston construction permits data](https://data.boston.gov/dataset/approved-building-permits) published by the /data.boston.gov to hopeful identify where the investments are going
 
 
 ```python
@@ -49,7 +60,7 @@ permit.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -273,9 +284,6 @@ permit.issued_year.plot(kind='hist')
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x24d49fe2bc8>
-
-
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_15_1.png">
 
@@ -315,7 +323,7 @@ def geo_join(geo_df, n):
 
 The follow cell gives us the option to further filter down the desired permit types in our study
 
-Now we are ready to create our spatial objects. This turns our permit data into a geodataframe. Right now it's just dots with no fine-tuned feature to display. We use EPSG:2805 (massachusetts mainland) projected coordinate system. crs is not a necessary argument in creating GeoDataFrame, but I found it helpful in aligning our geodataframe to our basemaps. 
+Now we are ready to create our spatial objects. This turns our permit data into a geodataframe. Right now it's just dots with no fine-tuned feature to display. We use EPSG:2805 (Massachusetts mainland) projected coordinate system. crs is not a necessary argument in creating GeoDataFrame, but I found it helpful in aligning our geodataframe to our basemaps. 
 
 
 ```python
@@ -332,9 +340,6 @@ geo_permit.plot()
 ```
 
 
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x24d5d80adc8>
 
 
 
@@ -371,7 +376,7 @@ geo_grids_value['declared_valuation_lg'] = np.log(geo_grids_value.declared_valua
 ```
 
 Here we are adding a few extra features to plot
-- high value commerical construction (declared valuation > $10^6$ USD)
+- high value commercial construction (declared valuation > $10^6$ USD)
 - high value public investment (investment made by City of Boston with value > $10^6$ USD)
 
 
@@ -422,7 +427,16 @@ plt.show()
 <img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_32_0.png">
 
 
+
+**Observations**
+
+1. When all projects are considered, it is obvious that the downtown / Back Bay / Fenway area have the highest development value
+2. Seaport \ Southie have a lot of high value properties under permit as well, standing in the second tier of development value
+3. There are spread-out valuable development pockets in Dorchester and Jamaica Plain. Overall, it seems like Dorchester has a slight advantage of development value, especially for the areas along the MBTA Red line and freeway.
+
 ## What if we filter for only new residential constructions?
+
+Since I'm mostly interested in new constructions, it might be worthwhile to focus on only residential new constructions for a secondary analysis. 
 
 
 ```python
@@ -462,53 +476,29 @@ plt.show()
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_36_0.png">
 
+**Observations**
 
-## Exploratory: KDEPLOT for project values
+1. A lot of new constructions are happening in Southie and South JP
+2. The Southie development value seems to spill out to North Dorchester along the T / freeway line
 
-The grid system is not smooth enough. I continued to experiment with KDEplot to esimate "density" of permit dots. Notice that default KDEplots coming with seaborn doesn't take in weights, therefore we have to manually create oversampled dataset with regard to declared evaluation
+## Beyond grids: KDEPLOT for density plots
 
+The grid system is not smooth enough. I continued to experiment with KDEplot to estimate "density" of permit dots. Notice that default KDEplots coming with seaborn doesn't take in weights, therefore we have to manually create oversampled dataset with regard to declared evaluation. 
+
+### New construction density
 
 ```python
 import geoplot as gplt
-```
-
-
-```python
-def weighted_points(geo_df, w_col = 'w_col'):
-    weighted_points = pd.DataFrame({'lat':[],'long':[]})
-    for index,i in geo_df.iterrows():
-        n = int(i[w_col])
-        new_df = pd.DataFrame({'lat':[i.lat]*n,'long':[i.long]*n})
-        weighted_points = pd.concat([weighted_points,new_df],axis = 0)
-        if index % 500 == 0:
-            print('{} done'.format(index))
-    return weighted_points
-```
-
-
-```python
 permit_KDE = permit_clean[(permit_clean.declared_valuation > 100) & 
                           (permit_clean.description.str.match('(Addition|Erect|New construction)'))]
 permit_KDE['w_col'] = np.floor(np.log(permit_clean.declared_valuation))
 permit_KDE.w_col.plot(kind = 'hist')
 ```
 
-    C:\Users\zkuang\Documents\Anaconda\Lib\site-packages\ipykernel_launcher.py:3: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-      This is separate from the ipykernel package so we can avoid doing imports until
-    
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x24d02739308>
-
-
+Taking a look at the distribution of the integer log declared values in those new contractions. 
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_40_2.png">
+
 
 
 ```python
@@ -518,43 +508,55 @@ df_point.shape
 
 
 
+```
+(3801, 3)
+```
 
-    (3801, 3)
 
 
+```python
+geometry = [Point(xy) for xy in zip(df_point.long, df_point.lat)]
+crs = {'init':'epsg:2805'}
+geo_df_point = GeoDataFrame(df_point,geometry = geometry,crs = crs)
+```
 
+```python
+_,ax = plt.subplots(1, figsize=(15,15))
+ax = creat_base_map(geo_df_point,ax)
+gplt.kdeplot(geo_df_point,n_levels=25,ax=ax,shade = True,cmap='Reds',alpha = 0.6)
+plt.setp(ax.get_xticklabels(), visible=False)
+plt.setp(ax.get_yticklabels(), visible=False)
+ax.tick_params(axis='both', which='both', length=0)
+plt.show()
+```
+
+<img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_43_0.png">
+
+As expected, there are big pockets of build-ups in Seaport, North Dorchester, South JP, West Roxbury, and surprisingly, a big of build up in Back Bay / South End. This gives us a sense of where the developments are happening since the sheer number of constructions can drive up property price too. 
+
+### New construction density weighted by declared valuation
+
+```python
+def weighted_points(geo_df, w_col = 'w_col',print_n = False):
+    weighted_points = pd.DataFrame({'lat':[],'long':[]})
+    for index,i in geo_df.iterrows():
+        n = int(i[w_col])
+        new_df = pd.DataFrame({'lat':[i.lat]*n,'long':[i.long]*n})
+        weighted_points = pd.concat([weighted_points,new_df],axis = 0)
+        if (index % 500 == 0) and print_n:
+            print('{} done'.format(index))
+    return weighted_points
+```
 
 ```python
 df_point_weighted = weighted_points(df_point.reindex())
 ```
 
-    29500 done
-    37000 done
-    129000 done
-    139000 done
-    206000 done
-    207000 done
-    
-
-
-```python
-df_point_weighted.columns
-```
-
-
-
-
-    Index(['lat', 'long'], dtype='object')
-
-
-
-
 ```python
 geometry = [Point(xy) for xy in zip(df_point_weighted.long, permit_clean.lat)]
 crs = {'init':'epsg:2805'}
-geo_df_point = GeoDataFrame(df_point_weighted,geometry = geometry,crs = crs)
+geo_df_point_weighted = GeoDataFrame(df_point_weighted,geometry = geometry,crs = crs)
 ```
-
 
 ```python
 import geoplot as gplt
@@ -563,12 +565,16 @@ import geoplot as gplt
 _,ax = plt.subplots(1, figsize=(15,15))
 
 ax = creat_base_map(geo_df_point,ax)
-gplt.kdeplot(geo_df_point,n_levels=25,ax=ax)
+gplt.kdeplot(geo_df_point_weighted,n_levels=25,ax=ax,shade = True,cmap='Blues',alpha = 0.6)
 plt.setp(ax.get_xticklabels(), visible=False)
 plt.setp(ax.get_yticklabels(), visible=False)
 ax.tick_params(axis='both', which='both', length=0)
 plt.show()
 ```
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/ParsePermits/output_45_0.png">
+![png](output_49_0.png)
+
+Here we see when weighted by declared valuation, downtown / Seaport area certainly overshadows the rest of the city. There high value band spans west to Fenway and south to Southie / North Dorchester. 
+
+These maps are subjected to boundary effects, hence are more likely to show high density / value in the central areas. Nevertheless, the provide another angle to investigate where developments are happening and money are flowing. 
 
