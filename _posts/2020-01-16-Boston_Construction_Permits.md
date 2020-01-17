@@ -4,7 +4,6 @@ date: 2020-01-16
 tags: [geopandas, geo-analysis]
 header:
   image: "\images\ParsePermits\Boston.jpg"
-  caption: "Construction permits data in Boston - where are investments going? "
 mathjax: "true"
 ---
 
