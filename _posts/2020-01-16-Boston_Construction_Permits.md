@@ -2,6 +2,9 @@
 title: "Boston Construction Permits "
 date: 2020-01-16
 tags: [geopandas, geo-analysis]
+header:
+  image: "/images/ParsePermits/Boston.jpg"
+excerpt: "Data Wrangling, Data Science, Messy Data"
 mathjax: "true"
 ---
 
