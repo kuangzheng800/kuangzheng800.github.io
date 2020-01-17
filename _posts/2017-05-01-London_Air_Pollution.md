@@ -3,7 +3,7 @@ title: "Modeling $$PM_{2.5}$$ in Greater London Area Using Remote Sensing of Aer
 date: 2017-05-11
 tags: [air pollution, geo-analysis, London]
 header:
-  image: "/images/ParsePermits/London.jpg"
+  image: "/images/LondonFog/London.jpg"
 excerpt: "Data Wrangling, Data Science, Messy Data"
 mathjax: "true"
 ---
