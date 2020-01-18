@@ -1,5 +1,5 @@
 ---
-title: "Modeling $$PM_{2.5}$$ in Greater London Area Using Remote Sensing of Aerosol Optical Depth "
+title: "Modeling PM2.5 in Greater London Area Using Remote Sensing of Aerosol Optical Depth "
 date: 2017-05-11
 tags: [air pollution, geo-analysis, London]
 header:
@@ -44,7 +44,7 @@ Spatial-Temporal Exposure Assessment Methods (STEAM) project led by King’s Col
 
 ## Model training
 ### The $ex ante$ model
-$$PM_{2.5_{ij}}=β_0+b_{1j}+(β_{1}+b_{2j})×AOD_{ij}+β_3×((AOD_{ij},Time_j,BP_{ij},TMP_{ij},CLD_{ij},DWEA_{ij},WDSP,PBLH_j))^2   +β_4×WDIR_{ij}+ϵ_{ij} , (b_1j,b_2j )~ N(0,Σ) $$
+$$PM_{2.5_{ij}}=β_0+b_{1j}+(β_{1}+b_{2j})×AOD_{ij}+β_3×((AOD_{ij},Time_j,BP_{ij},TMP_{ij},CLD_{ij},DWEA_{ij},WDSP,PBLH_j))^2   +β_4×WDIR_{ij}+ϵ_{ij} , (b_{1j},b_{2j} )~ N(0,Σ) $$
 
 $$AOD_{ij}$$ notifies AOD readings on day j at site i. $$b_1$$ and $$b_2$$ stand for the random intercept and random slope of AOD through time.
 
