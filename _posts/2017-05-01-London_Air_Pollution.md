@@ -27,7 +27,9 @@ The aim of this study is to calibrate an AOD-land use-$$PM_{2.5}$$ model using a
 ### Study area
 Our study is located in the Greater London Area, a rectangular region ranging from -0.561° to 0.372° in longitude and 51.217° N to 51.798° N in latitude. The study region comprised a mixture of urban and rural areas and a wide variation of population density, which ranges from the most populated borough of Islington (14,517 people/$$km^2$$) in the greater London area to the least populated neighborhood Sevenoaks in county of Kent (317 people/ $$km^2$$).
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture1.png" alt="Figure 1. the Greater London Area">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture1.png" >
+
+*Figure 1. the Greater London Area*
 
 ### AOD
 AOD data can be downloaded from [NASA MODIS](https://neo.sci.gsfc.nasa.gov/view.php?datasetId=MODAL2_M_AER_OD), although those data is very chunky and sparse, requiring significant amount of storage and computational power to process (Thanks to my colleague [Qian, Di](https://www.linkedin.com/in/qiandi/) for the initial acquisition). NASA developed an algorithms (multi-angle implementation of atmospheric correction algorithm[^4]) to deduce AOD from MODIS remote-sensing data, which have a theoretical precision of ±0.05τ . NASA provides AOD readings at a precision of 1 km × 1 km grid cells. The study region was covered by an orthogonal array that consisted of 22,878 such grid cells.
@@ -35,7 +37,9 @@ AOD data can be downloaded from [NASA MODIS](https://neo.sci.gsfc.nasa.gov/view.
 ### Meteorological data and air pollution data
 Spatial-Temporal Exposure Assessment Methods (STEAM) project led by King’s College, London provided $$PM_{2.5}$$ daily concentration at 29 ground-level monitors, as well as meteorological factors comprising of barometric pressure (BP), temperature (TMP), cloudiness (CLD), dew point temperature (DEWA), wind speed (WDSP), wind direction (WDIR) and planetary boundary layer height (PBLH). (These are proprietary data.) In preparation, we spatially joined each day’s meteorological data to AOD readings, using an algorithm that allowed for adjacency allocation varying daily. Number of households and population density was extracted from the 2011 census and merged to the AOD grid cells.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture2.png" alt="Figure 2. Average AOD readings from 2004 to 2014 in the study area and locations of $$PM_{2.5}$$ monitors.">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture2.png" >
+
+*Figure 2. Average AOD readings from 2004 to 2014 in the study area and locations of $$PM_{2.5}$$ monitors.*
 
 
 ## Model training
@@ -48,7 +52,9 @@ $$AOD_{ij}$$ notifies AOD readings on day j at site i. $$b_1$$ and $$b_2$$ stand
 
 The *ex ante* model allows for many interaction terms in the $$β_3$$ term, which may result in overfitting. For model selection, we use east absolute shrinkage and selection operator (LASSO) to identiy the optimal predition model. At the optimal penalty $$\lambda$$, model selection results are demonstrated as follow:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture3.png" alt="Figure 3. Demonstration of final model selection produced by LASSO. Final model has degrees of freedom of 39.">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture3.png" >
+
+*Figure 3. Demonstration of final model selection produced by LASSO. Final model has degrees of freedom of 39.*
 
 
 We then used the model specification generated from LASSO to predict the spatial and temporal distribution of $$PM_{2.5}$$ in Greater London area. All model training and prediction was done using R version 3.3.0 (2016-05-03).
@@ -90,16 +96,17 @@ Mean and standard deviation for spatial 10-fold cross validation $$R^2$$, mean a
 
 Plot the MAE of each monitoring sites in the study area to investigate into the spatial pattern of error distribution. Moran’s I test based on cross-validation R2, MAPE, MAE reported P-values of 0.36,0.43 and 0.53, indicating no detectable spatial autocorrelation. Therefore, although $$PM_{2.5}$$ monitors were spatially centered, the accuracy of didn’t significantly change moving outwards, indicating that the predictive power of our model was stable across space.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture5.png" alt="Figure 4. Spatial distribution of mean absolute error.">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture5.png">
+*Figure 4. Spatial distribution of mean absolute error.*
 
 ### Prediction
 
 Finally we plot the predictions of particular spatial / temporal $$PM_{2.5}$$ concentration. Expectedly, the more built-up north region showed higher concentration of $$PM_{2.5}$$, particularly in 2010 – 2012 period. Spikes of $$PM_{2.5}$$ predictions tend to appear in the center of the city, except for period 2010 – 2012, when there was an abnormal meteorological phase.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png" title="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014.  ">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png">
 
+*Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014.*
 
-{% include image.html src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png" alt="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014. " caption="This is Jekyll's logo, featuring Dr. Jekyll's serum!" <!-- Caption -->%}
 
 ### Discussion
 There are a few limitations of our study. First, we failed to verify the predictive power based on temporally randomized cross-validation. It is likely that the significant seasonal change of cloudiness and fogginess in the study region rendered the availability and quality of AOD measures excessively variable across time, which would compromise the model’s predictive power temporally; therefore, our model is not suitable for prediction of $$PM_{2.5}$$ concentrations at a specific time point. Second, only using population density and household’s numbers forbad detections of more granular $$PM_{2.5}$$ variabilities across space. Features like road density and industry location should be included for further studies when such granular $$PM_{2.5}$$ predictions are desired. With the rapidly increasing spatial and temporal resolution of satellite and ground-level monitoring, further studies should be expected to yield more accurate exposure assessment that better facilitates spatially specific and long time-span epidemiological studies.
