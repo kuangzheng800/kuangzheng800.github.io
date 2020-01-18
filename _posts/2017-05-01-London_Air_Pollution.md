@@ -11,16 +11,16 @@ mathjax: "true"
 ## Intro
 
 ### $$PM_{2.5}$$
-Since the health effects of particulate matter (PM) pronounced by the groundbreaking six cities study whose pioneer work linked air pollution to elevated mortality rate[^1], a large body of literature has found exposure to particulate matter associated to a wide range of deleterious health outcomes , such as asthma , cardiovascular disease, lung cancer, and cognitive decline . Fine particulate matter, defined as particulate matters with aerodynamic diameter less than 2.5 μm, was the foci of most of these studies, since they travel deeper into alveolus and impose higher health risk. A recent in vitro study has also found that low dose of PM2.5 exposure for only 24 hours can induce acute oxidative stress, inflammation and pulmonary impairment in healthy mice[^2]. Therefore, highly resolved-spatial and temporal evaluation of ambient PM levels becomes particularly relevant in furthering scientific basis for next-step air pollution regulation.
+Since the health effects of particulate matter (PM) pronounced by the groundbreaking six cities study whose pioneer work linked air pollution to elevated mortality rate[^1], a large body of literature has found exposure to particulate matter associated to a wide range of deleterious health outcomes , such as asthma , cardiovascular disease, lung cancer, and cognitive decline . Fine particulate matter, defined as particulate matters with aerodynamic diameter less than 2.5 μm, was the foci of most of these studies, since they travel deeper into alveolus and impose higher health risk. A recent in vitro study has also found that low dose of $$PM_{2.5}$$ exposure for only 24 hours can induce acute oxidative stress, inflammation and pulmonary impairment in healthy mice[^2]. Therefore, highly resolved-spatial and temporal evaluation of ambient PM levels becomes particularly relevant in furthering scientific basis for next-step air pollution regulation.
 
 
 ### AOD
 Aerosol optical depth (AOD) measures light extinction by aerosol in the atmospheric column above the earth’s surface. It is measured by NASA’s Moderate Resolution Imaging Spectroradiometer (MODIS) daily globally. Thanks to its wide spatial availability, AOD compliments the sparsity of ground level PM monitors readings in works using spatial interpolation to better profile individual’s exposure level.
 
 ### Other factors
-PM-AOD models suffer from two limitations; first, factors correlated to both AOD and ambient PM concentration, such as planetary boundary height and meteorological oscillation, may introduce high instability to the model; second, the association between AOD and PM has tendency to fluctuate on a daily basis, predominated by certain temporal and spatial correlation patterns. Both issues call for more sophisticated model calibration than simple AOD and PM2.5 empirical regressions. Some investigations tackled the first issue by controlling for local meteorological information[^3], land use information  or both; incorporating whether the aerosol is confined to the surface planetary boundary layer (PBL) or aloft can also engender a better agreement with surface PM level ; those findings suggested endogenizing those information in the predictive model, although a reliable ex ante model specification could not be provided. For the second issue, sophisticated statistical methods such as linear mixed effect model  and neural network  are employed to deliver a more stable parameter estimation, advocating data-driven model selection method in this category of predictive models.
+PM-AOD models suffer from two limitations; first, factors correlated to both AOD and ambient PM concentration, such as planetary boundary height and meteorological oscillation, may introduce high instability to the model; second, the association between AOD and PM has tendency to fluctuate on a daily basis, predominated by certain temporal and spatial correlation patterns. Both issues call for more sophisticated model calibration than simple AOD and $$PM_{2.5}$$ empirical regressions. Some investigations tackled the first issue by controlling for local meteorological information[^3], land use information  or both; incorporating whether the aerosol is confined to the surface planetary boundary layer (PBL) or aloft can also engender a better agreement with surface PM level ; those findings suggested endogenizing those information in the predictive model, although a reliable ex ante model specification could not be provided. For the second issue, sophisticated statistical methods such as linear mixed effect model  and neural network  are employed to deliver a more stable parameter estimation, advocating data-driven model selection method in this category of predictive models.
 
-The aim of this study is to calibrate an AOD-land use-PM2.5 model using a data-driven model selection to interpolate PM2.5 concentrations spatially and temporally in Greater London area.
+The aim of this study is to calibrate an AOD-land use-$$PM_{2.5}$$ model using a data-driven model selection to interpolate $$PM_{2.5}$$ concentrations spatially and temporally in Greater London area.
 
 ## Data
 
@@ -35,7 +35,7 @@ AOD data can be downloaded from [NASA MODIS](https://neo.sci.gsfc.nasa.gov/view.
 ### Meteorological data and air pollution data
 Spatial-Temporal Exposure Assessment Methods (STEAM) project led by King’s College, London provided $$PM_{2.5}$$ daily concentration at 29 ground-level monitors, as well as meteorological factors comprising of barometric pressure (BP), temperature (TMP), cloudiness (CLD), dew point temperature (DEWA), wind speed (WDSP), wind direction (WDIR) and planetary boundary layer height (PBLH). (These are proprietary data.) In preparation, we spatially joined each day’s meteorological data to AOD readings, using an algorithm that allowed for adjacency allocation varying daily. Number of households and population density was extracted from the 2011 census and merged to the AOD grid cells.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture2.png" alt="Figure 2. Average AOD readings from 2004 to 2014 in the study area and locations of PM2.5 monitors.">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture2.png" alt="Figure 2. Average AOD readings from 2004 to 2014 in the study area and locations of $$PM_{2.5}$$ monitors.">
 
 
 ## Model training
@@ -51,7 +51,7 @@ The *ex ante* model allows for many interaction terms in the $$β_3$$ term, whic
 <img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture3.png" alt="Figure 3. Demonstration of final model selection produced by LASSO. Final model has degrees of freedom of 39.">
 
 
-We then used the model specification generated from LASSO to predict the spatial and temporal distribution of PM2.5 in Greater London area. All model training and prediction was done using R version 3.3.0 (2016-05-03).
+We then used the model specification generated from LASSO to predict the spatial and temporal distribution of $$PM_{2.5}$$ in Greater London area. All model training and prediction was done using R version 3.3.0 (2016-05-03).
 
 
 ## Results
@@ -88,18 +88,25 @@ Mean and standard deviation for spatial 10-fold cross validation $$R^2$$, mean a
 | 50% - 75% | 0.924 | 0.051     | 0.245 | 0.018    | 3.645 | 0.657   |
 | 75%-100%  | 0.876 | 0.127     | 0.385 | 0.090    | 5.433 | 1.609   |
 
-Plot the MAE of each monitoring sites in the study area to investigate into the spatial pattern of error distribution. Moran’s I test based on cross-validation R2, MAPE, MAE reported P-values of 0.36,0.43 and 0.53, indicating no detectable spatial autocorrelation. Therefore, although PM2.5 monitors were spatially centered, the accuracy of didn’t significantly change moving outwards, indicating that the predictive power of our model was stable across space.
+Plot the MAE of each monitoring sites in the study area to investigate into the spatial pattern of error distribution. Moran’s I test based on cross-validation R2, MAPE, MAE reported P-values of 0.36,0.43 and 0.53, indicating no detectable spatial autocorrelation. Therefore, although $$PM_{2.5}$$ monitors were spatially centered, the accuracy of didn’t significantly change moving outwards, indicating that the predictive power of our model was stable across space.
 
 <img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture5.png" alt="Figure 4. Spatial distribution of mean absolute error.">
 
 ### Prediction
 
-Finally we plot the predictions of particular spatial / temporal $$PM_{2.5}$$ concentration. Expectedly, the more built-up north region showed higher concentration of PM2.5, particularly in 2010 – 2012 period. Spikes of PM2.5 predictions tend to appear in the center of the city, except for period 2010 – 2012, when there was an abnormal meteorological phase.
+Finally we plot the predictions of particular spatial / temporal $$PM_{2.5}$$ concentration. Expectedly, the more built-up north region showed higher concentration of $$PM_{2.5}$$, particularly in 2010 – 2012 period. Spikes of $$PM_{2.5}$$ predictions tend to appear in the center of the city, except for period 2010 – 2012, when there was an abnormal meteorological phase.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png" alt="Figure 5. Spatial distribution of total PM2.5 in Greater London from 2004 to 2014.  ">
+<img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png" title="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014.  ">
+
+
+{% include figure.html
+    src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png"
+    alt="JFigure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014. "
+    caption="This is Jekyll's logo, featuring Dr. Jekyll's serum!" <!-- Caption -->
+%}
 
 ### Discussion
-There are a few limitations of our study. First, we failed to verify the predictive power based on temporally randomized cross-validation. It is likely that the significant seasonal change of cloudiness and fogginess in the study region rendered the availability and quality of AOD measures excessively variable across time, which would compromise the model’s predictive power temporally; therefore, our model is not suitable for prediction of PM2.5 concentrations at a specific time point. Second, only using population density and household’s numbers forbad detections of more granular $$PM_{2.5}$$ variabilities across space. Features like road density and industry location should be included for further studies when such granular PM2.5 predictions are desired. With the rapidly increasing spatial and temporal resolution of satellite and ground-level monitoring, further studies should be expected to yield more accurate exposure assessment that better facilitates spatially specific and long time-span epidemiological studies.
+There are a few limitations of our study. First, we failed to verify the predictive power based on temporally randomized cross-validation. It is likely that the significant seasonal change of cloudiness and fogginess in the study region rendered the availability and quality of AOD measures excessively variable across time, which would compromise the model’s predictive power temporally; therefore, our model is not suitable for prediction of $$PM_{2.5}$$ concentrations at a specific time point. Second, only using population density and household’s numbers forbad detections of more granular $$PM_{2.5}$$ variabilities across space. Features like road density and industry location should be included for further studies when such granular $$PM_{2.5}$$ predictions are desired. With the rapidly increasing spatial and temporal resolution of satellite and ground-level monitoring, further studies should be expected to yield more accurate exposure assessment that better facilitates spatially specific and long time-span epidemiological studies.
 
 
 
