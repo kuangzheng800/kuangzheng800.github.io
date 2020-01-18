@@ -99,9 +99,9 @@ Finally we plot the predictions of particular spatial / temporal $$PM_{2.5}$$ co
 <img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png" title="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014.  ">
 
 
-{% include figure.html
-    src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png"
-    alt="JFigure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014. "
+{% include image.html
+    src="/images/LondonFog/Picture6.png"
+    alt="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014. "
     caption="This is Jekyll's logo, featuring Dr. Jekyll's serum!" <!-- Caption -->
 %}
 
