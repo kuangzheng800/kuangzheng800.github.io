@@ -99,11 +99,7 @@ Finally we plot the predictions of particular spatial / temporal $$PM_{2.5}$$ co
 <img src="{{ site.url }}{{ site.baseurl }}/images/LondonFog/Picture6.png" title="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014.  ">
 
 
-{% include image.html
-    src="/images/LondonFog/Picture6.png"
-    alt="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014. "
-    caption="This is Jekyll's logo, featuring Dr. Jekyll's serum!" <!-- Caption -->
-%}
+{% include image.html src="/images/LondonFog/Picture6.png" alt="Figure 5. Spatial distribution of total $$PM_{2.5}$$ in Greater London from 2004 to 2014. " caption="This is Jekyll's logo, featuring Dr. Jekyll's serum!" <!-- Caption -->%}
 
 ### Discussion
 There are a few limitations of our study. First, we failed to verify the predictive power based on temporally randomized cross-validation. It is likely that the significant seasonal change of cloudiness and fogginess in the study region rendered the availability and quality of AOD measures excessively variable across time, which would compromise the model’s predictive power temporally; therefore, our model is not suitable for prediction of $$PM_{2.5}$$ concentrations at a specific time point. Second, only using population density and household’s numbers forbad detections of more granular $$PM_{2.5}$$ variabilities across space. Features like road density and industry location should be included for further studies when such granular $$PM_{2.5}$$ predictions are desired. With the rapidly increasing spatial and temporal resolution of satellite and ground-level monitoring, further studies should be expected to yield more accurate exposure assessment that better facilitates spatially specific and long time-span epidemiological studies.
