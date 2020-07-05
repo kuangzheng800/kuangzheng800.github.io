@@ -4,7 +4,7 @@ date: 2017-05-11
 tags: [air pollution, geo-analysis, London]
 header:
   image: "/images/LondonFog/London.jpg"
-excerpt: "Data Wrangling, Data Science, Messy Data"
+excerpt: "Data Wrangling, Data Science"
 mathjax: "true"
 ---
 
