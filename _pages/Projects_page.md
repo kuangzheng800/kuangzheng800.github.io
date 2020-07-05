@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: ds_posts
 permalink: /Projects_page/
 title: "Data Science"
 author_profile: true
