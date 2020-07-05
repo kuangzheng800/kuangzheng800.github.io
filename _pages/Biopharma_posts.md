@@ -1,6 +1,6 @@
 ---
 layout: posts
-permalink: /Projects_page/
+permalink: /Biopharma_posts/
 title: "Data Science"
 author_profile: true
 header:
