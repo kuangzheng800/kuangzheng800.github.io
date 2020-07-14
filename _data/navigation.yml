@@ -1,13 +1,13 @@
 # main links
 main:
-  - title: "About"
-    url: /about/
-  - title: "Data Science Projects"
-    url: /Projects_page/
-  - title: "BioPharma Posts"
-    url: /Biopharma_posts/
+  # - title: "About"
+  #   url: /about/
+  # - title: "Data Science Projects"
+  #   url: /Projects_page/
+  # - title: "BioPharma Posts"
+  #   url: /Biopharma_posts/
   - title: "Try"
-    url: /Try/
+    url: /docs/Try/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
