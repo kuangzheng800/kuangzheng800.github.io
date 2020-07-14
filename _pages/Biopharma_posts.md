@@ -1,7 +1,7 @@
 ---
-layout: posts
+layout: bio_posts
 permalink: /Biopharma_posts/
-title: "Data Science"
+title: "BioPharma notes"
 author_profile: true
 header:
   image: "/images/header_projects.jpg"
