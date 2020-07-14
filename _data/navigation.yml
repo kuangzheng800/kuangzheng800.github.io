@@ -1,13 +1,7 @@
 # main links
 main:
-  # - title: "About"
-  #   url: /about/
-  # - title: "Data Science Projects"
-  #   url: /Projects_page/
-  # - title: "BioPharma Posts"
-  #   url: /Biopharma_posts/
-  - title: "Try"
-    url: https://kuangzheng800.github.io/docs/Try/
+  - title: "Quick-Start Guide"
+    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
