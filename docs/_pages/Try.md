@@ -1,7 +1,7 @@
 ---
 title: "BioPharma notes"
 layout: posts
-permalink: /category/
+permalink: /Try/
 author_profile: true
 header:
   image: "/images/header_projects.jpg"
