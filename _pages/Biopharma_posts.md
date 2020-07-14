@@ -1,5 +1,5 @@
 ---
-layout: bio_posts
+layout: bioposts
 permalink: /Biopharma_posts/
 title: "BioPharma notes"
 author_profile: true
