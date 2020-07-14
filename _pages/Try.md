@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: posts
 permalink: /category/
 title: "BioPharma notes"
 author_profile: true
