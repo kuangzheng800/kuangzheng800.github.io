@@ -13,6 +13,8 @@ mathjax: true
 I have started looking for a property in Boston. With many of its self-claimed "up and coming" neighborhoods, it can be tricky to locate the next most profitable investment. Of course one way to make money is to chase money; where there are already lots of investment would probably see the highest appreciation. Therefore, I leveraged the [Boston construction permits data](https://data.boston.gov/dataset/approved-building-permits) published by the /data.boston.gov to hopeful identify where the investments are going
 
 
+
+
 ```python
 import pandas as pd
 import geopandas as gpd
@@ -64,6 +66,7 @@ permit.head()
         text-align: right;
     }
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
